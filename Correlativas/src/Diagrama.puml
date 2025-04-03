@@ -1,0 +1,23 @@
+@startuml
+class Inscripcion {
+    - Alumno alumno
+    - List<Materia> materias
+    + Boolean aprobada()
+    + Boolean cumpleCorrelativas(Materia materia)
+}
+
+class Alumno {
+    - List<Materia> materiasAprobadas
+    + List<Materia> getMateriasAprobadas()
+}
+
+class Materia {
+    - List<Materia> correlativas
+    + List<Materia> getCorrelativas()
+}
+
+Inscripcion --> Alumno : tiene
+Inscripcion --> "*" Materia : incluye
+Alumno --> "*" Materia : aprueba
+Materia --> "*" Materia : tiene como correlativas
+@enduml
